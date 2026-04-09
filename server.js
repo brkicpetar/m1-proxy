@@ -125,12 +125,7 @@ app.get("/resolve", async (req, res) => {
     }
 
     res.setHeader("Access-Control-Allow-Origin", "*");
-    return res.json({
-      ok: true,
-      sourcePage: result.targetUrl,
-      streamUrl: result.streamUrl,
-      hints: result.requests
-    });
+    return res.redirect(result.streamUrl);
   } catch (err) {
     return res.status(500).json({
       ok: false,
