@@ -8,8 +8,8 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
-async function resolveM3U8(video) {
-  const targetUrl = `https://player.mediaklikk.hu/playernew/player.php?video=${encodeURIComponent(video)}`;
+async function resolveM3U8(video) {  
+  const targetUrl = `https://player.mediaklikk.hu/playernew/player.php?video=${encodeURIComponent(video)}&noflash=yes&osfamily=Windows&osversion=10&browsername=Chrome&browserversion=146.0.0.0&title=M1&contentid=mtv1live&embedded=0&sourceUrl=https%3A%2F%2Fmediaklikk.hu%2Felo%2Fmtv1live%2F&autostart=true&mute=false`;
 
   const browser = await chromium.launch({
   headless: true,
