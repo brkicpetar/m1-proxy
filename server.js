@@ -12,14 +12,16 @@ async function resolveM3U8(video) {
   const targetUrl = `https://player.mediaklikk.hu/playernew/player.php?video=${encodeURIComponent(video)}`;
 
   const browser = await chromium.launch({
-    headless: true,
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu"
-    ]
-  });
+  headless: true,
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--disable-software-rasterizer",
+    "--disable-blink-features=AutomationControlled"
+  ]
+});
 
   const page = await browser.newPage({
     userAgent:
